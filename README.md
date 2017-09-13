@@ -1,12 +1,30 @@
-## Welcome to GitHub Pages
+# Coding in three dimensions : WebVR 
 
-You can use the [editor on GitHub](https://github.com/tailless/webvr/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Welcome..
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Getting SetUp to do 3D in the browser
+
+### get [Three.js](https://threejs.org/) :
+
+- [download](https://threejs.org/build/three.min.js) minified build file
+- use npm ```$ npm install three ```
+- [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library
+
+
+### setup very basic HTML 
+
+```
+	<!DOCTYPE html>
+	<meta charset="utf-8">
+	<body>
+	<script src="./js/three.min.js"></script>
+  
+```
+
+
+
 
 ```markdown
 Syntax highlighted code block
