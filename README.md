@@ -8,12 +8,17 @@ Welcome..
 
 ### get [Three.js](https://threejs.org/) :
 
-- [download](https://threejs.org/build/three.min.js) minified build file
-- use npm ```$ npm install three ```
-- [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library
+What is Three.js? 
+
+A Javascript 3D library, that abstracts away the complexities of coding 3D in javascript -  by [Mr. Doob](http://mrdoob.com/)
+
+- [download](https://threejs.org/build/three.min.js) just the minified build file
+- use npm 
+```$ npm install three ```  & use a module bundler, such as [rollup](https://rollupjs.org/) to build files.
+- [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.
 
 
-### setup very basic HTML 
+### setup very basic HTML + import three.js library
 
 ```
 	<!DOCTYPE html>
@@ -23,7 +28,47 @@ Welcome..
   
 ```
 
+### write some javascript 
 
+```
+var scene, camera, renderer;
+var geometry, material, mesh;
+
+init();
+animate();
+
+function init() {
+
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera.position.z = 1000;
+
+    geometry = new THREE.BoxGeometry( 200, 200, 200 );
+    material = new THREE.MeshNormalMaterial( { color: 0x21FFD3, wireframe: false } );
+
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh );
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+    document.body.appendChild( renderer.domElement );
+
+}
+
+function animate() {
+
+    requestAnimationFrame( animate );
+
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+
+    renderer.render( scene, camera );
+
+}
+
+```
 
 
 ```markdown
@@ -43,6 +88,9 @@ Syntax highlighted code block
 
 [Link](url) and ![Image](src)
 ```
+
+
+
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
