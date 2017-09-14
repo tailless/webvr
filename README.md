@@ -1,17 +1,19 @@
-# Coding in three dimensions : WebVR 
+# Coding in three dimensions 
+
+Introduction to Web 3d & WebVR 
 
 Welcome..
 
 
-
 ## Getting SetUp to do 3D in the browser
 
-### get [Three.js](https://threejs.org/) :
+### [Three.js](https://threejs.org/) :
 
 What is Three.js? 
 
-A Javascript 3D library, that abstracts away the complexities of coding 3D in javascript -  by [Mr. Doob](http://mrdoob.com/)
+A javascript 3d library, that abstracts away the complexities of coding 3d in javascript -  by [Mr. Doob](http://mrdoob.com/)
 
+How to get it : 
 - [download](https://threejs.org/build/three.min.js) just the minified build file
 - use npm 
 ```$ npm install three ```  & use a module bundler, such as [rollup](https://rollupjs.org/) to build files.
