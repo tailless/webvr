@@ -5,19 +5,18 @@ Introduction to Web 3d & WebVR
 Welcome..
 
 
-## Getting SetUp to do 3D in the browser
+## coding 3D for the browser - the set up :
 
-### [Three.js](https://threejs.org/) :
-
-What is Three.js? 
+### What is [Three.js](https://threejs.org/) ? :
 
 A javascript 3d library, that abstracts away the complexities of coding 3d in javascript -  by [Mr. Doob](http://mrdoob.com/)
 
 How to get it : 
-- [download](https://threejs.org/build/three.min.js) just the minified build file
-- use npm 
-```$ npm install three ```  & use a module bundler, such as [rollup](https://rollupjs.org/) to build files.
+- [download](https://threejs.org/build/three.min.js) just the minified build file.
 - [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.
+- use npm 
+```$ npm install three ```  & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build files.
+
 
 
 ### setup very basic HTML + import three.js library
@@ -71,6 +70,14 @@ function animate() {
 }
 
 ```
+
+###Run a localhost
+
+
+
+##What is WebVR ?
+
+WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in your browser.
 
 
 ```markdown
