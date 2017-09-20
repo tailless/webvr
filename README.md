@@ -1,17 +1,18 @@
-# Coding in three dimensions 
+# Coding in Three Dimensions 
 
-Introduction to Web 3d & WebVR 
+Introduction to 3d, WebGL & WebVR.  
 
 Welcome..
 
 
-## coding 3D for the browser - the set up :
+## 3D in Javascript - set up :
 
 ### What is [Three.js](https://threejs.org/) ? :
 
 A javascript 3d library, that abstracts away the complexities of coding 3d in javascript -  by [Mr. Doob](http://mrdoob.com/)
 
 How to get it : 
+
 - [download](https://threejs.org/build/three.min.js) just the minified build file.
 - [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.
 - use npm 
@@ -19,54 +20,103 @@ How to get it :
 
 
 
-### setup very basic HTML + import three.js library
+### setup basic HTML + import three.js library
 
 ```
-	<!DOCTYPE html>
-	<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>webvr workshop</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<style>
+			body {
+				background-color: #101010;
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
 	<body>
-	<script src="./js/three.min.js"></script>
-  
+		<script src="./js/vendor/three.min.js"></script>
+		<script src="./js/workshop.js"></script>
+	</body>
 ```
 
-### write some javascript 
+### Create the Scene, Camera & Renderer
+
+Set up the basics of a 3d scene.
 
 ```
 var scene, camera, renderer;
-var geometry, material, mesh;
 
 init();
 animate();
 
 function init() {
 
-    scene = new THREE.Scene();
+	setTheScene();
 
-    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-    camera.position.z = 1000;
+}
 
-    geometry = new THREE.BoxGeometry( 200, 200, 200 );
-    material = new THREE.MeshNormalMaterial( { color: 0x21FFD3, wireframe: false } );
+function setTheScene(){
 
-    mesh = new THREE.Mesh( geometry, material );
-    scene.add( mesh );
+	//set up scene
+	scene = new THREE.Scene();
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+	//create camera
+	camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 1, 1000 );
 
-    document.body.appendChild( renderer.domElement );
+	//create renderer
+	renderer = new THREE.WebGLRenderer();
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	document.body.appendChild( renderer.domElement );
+
+	window.addEventListener( 'resize', onWindowResize, false );
+
+}
+
+
+function onWindowResize() {
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( window.innerWidth, window.innerHeight );
 
 }
 
 function animate() {
 
-    requestAnimationFrame( animate );
+	renderer.animate( render );
 
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
+}
 
-    renderer.render( scene, camera );
+function render() {
 
+	renderer.render( scene, camera );
+
+}
+```
+
+### Create an 3D object
+
+Make a cube and add it to stage -  call from init(), and declare the mesh variable, well need it accessable for later. 
+
+```
+var mesh;
+
+function createMesh(){
+	var geometry, material;
+
+	geometry = new THREE.BoxGeometry( 20, 20, 20 );
+	material =  new THREE.MeshBasicMaterial({ color: 0x9988ff, wireframe: true});
+
+	mesh = new THREE.Mesh( geometry, material );
+	mesh.position.set( 0, 10, -50 );
+	scene.add( mesh );
 }
 
 ```
