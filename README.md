@@ -16,7 +16,7 @@ How to get it :
 - [download](https://threejs.org/build/three.min.js) just the minified build file.
 - [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.
 - use npm 
-```$ npm install three ```  & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build files.
+`$ npm install three`  & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build files.
 
 
 
@@ -46,7 +46,7 @@ How to get it :
 
 ### Create the Scene, Camera & Renderer
 
-Set up the basics of a 3d scene.
+- Set up the basics of a 3d project.
 
 ```
 var scene, camera, renderer;
@@ -55,9 +55,9 @@ init();
 animate();
 
 function init() {
-
+	// set up the scene, the camera and the renderer
 	setTheScene();
-
+	
 }
 
 function setTheScene(){
@@ -103,10 +103,16 @@ function render() {
 
 ### Create an 3D object
 
-Make a cube and add it to stage -  call from init(), and declare the mesh variable, well need it accessable for later. 
+- Make a cube mesh and add it to stage.
+- Declare the mesh variable at top, well need it accessable.
+- Make it move.
 
 ```
 var mesh;
+
+//in init()
+	createMesh()
+	
 
 function createMesh(){
 	var geometry, material;
@@ -119,13 +125,71 @@ function createMesh(){
 	scene.add( mesh );
 }
 
+//in render()
+	mesh.rotation.x += 0.01;
+	mesh.rotation.y += 0.02;
 ```
 
-###Run a localhost
+### Explore Materials
+
+- Remove the wireframe...
+- Pick a material that reflects light.
+
+```
+material =  new THREE.MeshStandardMaterial({ color: 0x9988ff  });
+```
+
+### Turn on the Ligths
+
+```
+//in init()
+	createLights()
+
+function createLights() {
+
+	var directionalLight = new THREE.DirectionalLight( 0xffeedd, 0.8 );
+	directionalLight.position.set( -100, 100, 0 );
+	scene.add( directionalLight );
+	
+}
+```
+
+### Create a Disco Ball
+
+- Change the geometry to Sphere and change colour of material and turn on flat shading. 
+- Add extra lights. 
+- Remove rotation on X axis and slow down on Y axis.
+
+```
+//in createMesh()
+	geometry = new THREE.SphereGeometry(10, 32, 16);
+	material =  new THREE.MeshStandardMaterial({ color: 0xffffff, flatShading:true });
+
+//in createLights()
+	var light = new THREE.SpotLight( 0xffffff, 0.5);
+	light.position.set( 50, -20, -20 );
+	scene.add( light );
+
+	var hemisphereLight = new THREE.HemisphereLight( 0x00aaff, 0xff43ff, 1 );
+	hemisphereLight.position.set( 0, 100, 0 );
+	scene.add( hemisphereLight );
+
+//in render()
+	//mesh.rotation.x += 0.01;
+        mesh.rotation.y += 0.01;
+  
+```
+
+### More Complex Scene & Models
+
+- explore the three.js [editor](https://threejs.org/editor/)
+- 
+
+### Run a localhost
 
 
 
-##What is WebVR ?
+## What is WebVR ?
 
 WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in your browser.
 
