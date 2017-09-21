@@ -7,7 +7,7 @@ Introduction to 3d, WebGL & WebVR.
 
 - 3D Cartesian Coordinates
 
-![3D Cartesian Coordinates]:(/images/3D_coordinate_system.png)
+![3D Cartesian Coordinates](/images/3D_coordinate_system.png)
 
 
 
@@ -50,9 +50,12 @@ Other :
 	</head>
 
 	<body>
-		<script src="./three.min.js"></script>
-		<script src="./WebVR.js"></script>
-		<script src="./workshop.js"></script>
+
+		<script src="./js/vendor/three.min.js"></script>
+		<script src="./js/vendor/WebVR.js"></script>
+
+		<script src="./js/workshop.js"></script>
+
 	</body>
 ```
 
@@ -66,8 +69,15 @@ init();
 animate();
 
 function init() {
-	// set up the scene, the camera and the renderer
+
 	setTheScene();
+	
+	//createMesh();
+	//createLights();
+	//loadModel();
+	
+	//createPanorama();
+	//enableVR();
 	
 }
 
@@ -84,7 +94,7 @@ function setTheScene(){
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
-
+	
 	window.addEventListener( 'resize', onWindowResize, false );
 
 }
@@ -114,17 +124,14 @@ function render() {
 
 ### Create an 3D object
 
-- Make a cube geometry, attach a material add it to a mesh.
-- Declare the mesh variable at top, well need it accessable. Add mesh to the scene.
-- Make it move!
+Make a cube :
+- Create a geometry.
+- Create a material.
+- Create a mesh, and add geometry and the material to the mesh.
+- Add mesh to the scene.
+- Animate it!
 
 ```
-var mesh;
-
-//in init()
-	createMesh()
-	
-
 function createMesh(){
 	var geometry, material;
 
@@ -135,10 +142,15 @@ function createMesh(){
 	mesh.position.set( 0, 10, -50 );
 	scene.add( mesh );
 }
+```
 
-//in render()
-	mesh.rotation.x += 0.01;
-	mesh.rotation.y += 0.02;
+Declare the mesh at the top, so that it's accessable to us :
+```var mesh;```
+
+Add to render():
+```
+   mesh.rotation.x += 0.01;
+   mesh.rotation.y += 0.02;
 ```
 
 ### Explore Materials
@@ -153,9 +165,6 @@ material =  new THREE.MeshStandardMaterial({ color: 0x9988ff  });
 ### Turn on the Ligths
 
 ```
-//in init()
-	createLights()
-
 function createLights() {
 
 	var directionalLight = new THREE.DirectionalLight( 0xffeedd, 1 );
@@ -169,14 +178,16 @@ function createLights() {
 
 - Change the geometry to Sphere and change colour of material and turn on flat shading. 
 - Add extra lights. 
-- Remove rotation on X axis and slow down on Y axis.
+- Remove rotation on X axis.
 
+Change in createMesh()
 ```
-//in createMesh()
 	geometry = new THREE.SphereGeometry(10, 32, 16);
 	material =  new THREE.MeshStandardMaterial({ color: 0xffffff, flatShading:true });
+```
 
-//in createLights()
+Add in createLights()
+```
 	var light = new THREE.SpotLight( 0xffffff, 0.5);
 	light.position.set( 50, -20, -20 );
 	scene.add( light );
@@ -184,12 +195,8 @@ function createLights() {
 	var hemisphereLight = new THREE.HemisphereLight( 0x00aaff, 0xff43ff, 1 );
 	hemisphereLight.position.set( 0, 100, 0 );
 	scene.add( hemisphereLight );
-
-//in render()
-	//mesh.rotation.x += 0.01;
-        mesh.rotation.y += 0.01;
-  
 ```
+
 
 ### More Complex Scene & Models
 
