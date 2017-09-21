@@ -17,8 +17,9 @@ How to get it :
 
 - [download](https://threejs.org/build/three.min.js) just the minified build file.
 - [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.
-- use npm 
-`$ npm install three`  & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build files.
+- install via npm & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build project files:
+```$ npm install three```
+
 
 
 
@@ -105,9 +106,9 @@ function render() {
 
 ### Create an 3D object
 
-- Make a cube mesh and add it to stage.
-- Declare the mesh variable at top, well need it accessable.
-- Make it move.
+- Make a cube geometry, attach a material add it to a mesh.
+- Declare the mesh variable at top, well need it accessable. Add mesh to the scene.
+- Make it move!
 
 ```
 var mesh;
