@@ -47,6 +47,7 @@ Other :
 
 	<body>
 		<script src="./three.min.js"></script>
+		<script src="./WebVR.js"></script>
 		<script src="./workshop.js"></script>
 	</body>
 ```
