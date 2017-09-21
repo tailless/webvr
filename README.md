@@ -275,6 +275,51 @@ Experimental feature, enabel in Chrome : chrome://flags#enable-webvr
 
 - http://caniuse.com/#feat=webvr
 
+```
+function enableVR(){
+
+	//enable the renderer
+	renderer.vr.enabled = true;
+
+  // check if WebVR API is available
+	WEBVR.checkAvailability().catch( function( message ) {
+
+		document.body.appendChild( WEBVR.getMessageContainer( message ) );
+
+	} );
+
+	//check if there is a VR Display connected/enabled..
+	WEBVR.getVRDisplay( function ( display ) {
+
+		renderer.vr.setDevice( display );
+
+		document.body.appendChild( WEBVR.getButton( display, renderer.domElement ) );
+
+	} );
+}
+
+```
+
+### Create Panorama
+
+```
+function createPanorama() {
+	// panoramic, equirectangular image, projected on the inside of a sphere ( BufferGeometry - for performance )
+	var panorama_geometry = new THREE.SphereBufferGeometry( 500, 60, 40 );
+	// invert the geometry on the x-axis so that all of the faces point inward
+	panorama_geometry.scale( - 1, 1, 1 );
+
+	var panorama_material = new THREE.MeshBasicMaterial( {
+		map: new THREE.TextureLoader().load( 'textures/south_bank_skate_park_small.jpg' )
+	} );
+
+	panorama = new THREE.Mesh( panorama_geometry, panorama_material );
+	panorama.matrixAutoUpdate = false;
+	panorama.updateMatrix();
+	scene.add( panorama );
+}
+```
+
 ###Links:
 
 WebGL:
