@@ -231,7 +231,7 @@ http-server . -p 8000
 
 This step is optional, but you will get a warning in Chrome later on if running over an insecure connection.
 
-- create the cert-key pair files, valid for roughly 10 years / 3650 days :
+- create the cert-key pair files, valid for roughly 10 years
 
 ```
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
@@ -298,12 +298,15 @@ if(girl){
 }
 ```
 
-### Create Panorama
+## Create Panorama
 
 - Create a Sphere geometry (BufferGeometry for performance )
 - Invert the geometry on the x-axis so that all of the faces point inward, so that the image projects on the inside of a sphere 
-- Create basic mesh material with a map
+- Create basic material with a map
 - Load a panoramic, [equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection) image as texture
+- Attach geometry & material to a mesh, 
+- Disable matrixAutoUpdate (performance) - our mesh will not move
+- Add panorama mesh to scene
 
 ```
 function createPanorama() {
@@ -322,14 +325,16 @@ function createPanorama() {
 ```
 
 
-### WebVR ?
+## WebVR ?
 
 WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in your browser.
 
-Experimental feature, enabel in Chrome : chrome://flags#enable-webvr
+[Experimental feature](http://caniuse.com/#feat=webvr), enabel in Chrome by setting chrome://flags#enable-webvr ,
+or for live projects, request a [Origin Token]() to enable by default.
 
-- http://caniuse.com/#feat=webvr
 
+- Enable VR in renerer
+- Use the WebVR helper script to detect the device capabilities
 ```
 function enableVR(){
 
@@ -354,6 +359,15 @@ function enableVR(){
 }
 
 ```
+
+## Get your device ready
+
+- Android Phone with the Google VR Services app installed ( requires Android OS version 6+ Marshmallow )
+- Chrome browser
+- VR Goggles
+- Make sure you have laptop and phone coneected to the same network
+- Use Chrome to navigate to your laptop's IP address + port number, i.e 192.168.0.2:8000 
+
 
 
 
