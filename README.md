@@ -16,7 +16,9 @@ A javascript 3d library, that abstracts away the complexities of coding 3d in ja
 How to get it : 
 
 - [download](https://threejs.org/build/three.min.js) just the minified build file.
-- [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.
+
+Other :
+- [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.(large file!)
 - install via npm & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build project files:
 ```$ npm install three```
 
@@ -24,6 +26,8 @@ How to get it :
 
 
 ### setup basic HTML + import three.js library
+
+- Make a index.html file.
 
 ```
 <!DOCTYPE html>
@@ -42,14 +46,13 @@ How to get it :
 	</head>
 
 	<body>
-		<script src="./js/vendor/three.min.js"></script>
-		<script src="./js/workshop.js"></script>
+		<script src="./three.min.js"></script>
+		<script src="./workshop.js"></script>
 	</body>
 ```
 
-### Create the Scene, Camera & Renderer
-
-- Set up the basics of a 3d project.
+### Create the 3D basics
+- Set up the Scene, Camera & Renderer of a 3d project.
 
 ```
 var scene, camera, renderer;
@@ -150,8 +153,8 @@ material =  new THREE.MeshStandardMaterial({ color: 0x9988ff  });
 
 function createLights() {
 
-	var directionalLight = new THREE.DirectionalLight( 0xffeedd, 0.8 );
-	directionalLight.position.set( -100, 100, 0 );
+	var directionalLight = new THREE.DirectionalLight( 0xffeedd, 1 );
+	directionalLight.position.set( -100, 100, 50 );
 	scene.add( directionalLight );
 	
 }
