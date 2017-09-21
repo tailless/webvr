@@ -226,6 +226,47 @@ http-server . -p 8000
 `http-server -p 8000  -ssl -cert cert.pem `
 
 
+### IMPORT A MODEL
+
+- [Cirno](https://github.com/tailless/webvr/blob/master/demos/models/cirno.json)
+
+```
+function loadModel(){
+
+	// loading model
+	var loader = new THREE.ObjectLoader();
+
+	loader.load(
+		// resource URL
+		"models/cirno.json",
+
+		// pass the loaded data to the onLoad function.
+		//Here it is assumed to be an object
+		function ( obj ) {
+			//add the loaded object to the scene
+			obj.position.set( 120, -100, -170 );
+			obj.scale.set( 0.1, 0.1, 0.1 );
+
+			scene.add( obj );
+
+			cirno = obj;
+		},
+
+		// Function called when download progresses
+		function ( xhr ) {
+			console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+		},
+
+		// Function called when download errors
+		function ( xhr ) {
+			console.error( 'An error happened' );
+		}
+	);
+
+}
+```
+
+
 ### WebVR ?
 
 WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in your browser.
