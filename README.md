@@ -24,10 +24,9 @@ How to get it :
 Or :
 - [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.(large file!)
 - install via npm & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build project files:
-
-``` bash $ npm install three ```
-
-
+``` 
+$ npm install three
+```
 
 
 ## The basic HTML
@@ -55,8 +54,8 @@ Or :
 
 	<body>
 
-		<script src="./js/vendor/three.min.js"></script>
-		<script src="./js/vendor/WebVR.js"></script>
+		<script src="./js/three.min.js"></script>
+		<script src="./js/WebVR.js"></script>
 
 		<script src="./js/workshop.js"></script>
 
@@ -66,7 +65,7 @@ Or :
 ## Create the 3D basics
 
 - The  `workshop.js` file in `./js folder`.
-- Create the *Scene*,
+- Create the Scene,
 - the Camera,
 - and the Renderer.
 
@@ -153,7 +152,9 @@ function createMesh(){
 ```
 
 Declare the mesh at the top, so that it's accessable to us :
-``` var mesh; ```
+``` 
+var mesh; 
+```
 
 Add to render():
 ```
@@ -172,6 +173,7 @@ material = new THREE.MeshStandardMaterial({ color: 0x9988ff  });
 
 ## Turn on the Ligths
 
+- Add light to the scene
 ```
 function createLights() {
 
@@ -184,17 +186,13 @@ function createLights() {
 
 ## Create a Disco Ball
 
-- Change the geometry to Sphere and change colour of material and turn on flat shading. 
-- Add extra lights. 
-- Remove rotation on X axis.
-
-Change in createMesh()
+- Change the geometry to Sphere and change colour of material and turn on flat shading in createMesh()
 ```
 	geometry = new THREE.SphereGeometry(10, 32, 16);
 	material =  new THREE.MeshStandardMaterial({ color: 0xffffff, flatShading:true });
 ```
 
-Add in createLights()
+- Add extra lights in createLights()
 ```
 	var light = new THREE.SpotLight( 0xffffff, 0.5);
 	light.position.set( 50, -20, -20 );
@@ -205,39 +203,52 @@ Add in createLights()
 	scene.add( hemisphereLight );
 ```
 
+- Remove rotation on X axis in render()
+
 
 ## More Complex 3D Models & Maps
 
 - explore the three.js [editor](https://threejs.org/editor/)
-- load an .obj file.
-- attach a map
-- export as json
+- load a 3D model (`./models/Cirno.obj`)
+- attach a diffusion map texture(`/models/cirno_d.tga`)
+- export model with map as json
+
 
 ## Run a localhost
 
-- Install node http-server (in not already installed):
-```npm install http-server -g```
+- Install node http-server ( if not already installed ):
+```
+npm install http-server -g
+```
 
 - Run HTTP Server:
-```http-server . -p 8000```
+```
+http-server . -p 8000
+```
 
 
-### Secure connection : serve over HTTPS (optional):
+### Establish secure connection - serve over HTTPS (optional):
 
-- create the cert-key pair files :
+This step is optional, but you will get a warning in Chrome later on if running over an insecure connection.
 
-`openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem`
+- create the cert-key pair files, valid for roughly 10 years / 3650 days :
 
-( This generates a cert-key pair and it will be valid for roughly 10 years (3650 days to be exact).)
+```
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+```
 
-..then run:
+- ..then run:
 
-`http-server -p 8000  -ssl -cert cert.pem `
+```
+http-server -p 8000  -ssl -cert cert.pem 
+```
 
 
-### IMPORT A MODEL
+## Import the model
 
-- [Cirno](https://github.com/tailless/webvr/blob/master/demos/models/cirno.json)
+- Load the girl json file (./models/cirno.json)
+- Position the model
+- Add to Scene
 
 ```
 function loadModel(){
@@ -258,7 +269,7 @@ function loadModel(){
 
 			scene.add( obj );
 
-			cirno = obj;
+			girl = obj;
 		},
 
 		// Function called when download progresses
@@ -272,6 +283,41 @@ function loadModel(){
 		}
 	);
 
+}
+```
+
+- Declare a referece to the girl model
+```
+var girl;
+```
+
+- so that we can animate her in render()
+```
+if(girl){
+	girl.rotation.y -= 0.01;
+}
+```
+
+### Create Panorama
+
+- Create a Sphere geometry (BufferGeometry for performance )
+- Invert the geometry on the x-axis so that all of the faces point inward, so that the image projects on the inside of a sphere 
+- Create basic mesh material with a map
+- Load a panoramic, [equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection) image as texture
+
+```
+function createPanorama() {
+	
+	var geometry = new THREE.SphereBufferGeometry( 500, 60, 40 );
+	geometry.scale( - 1, 1, 1 );
+
+	var material = new THREE.MeshBasicMaterial( {
+		map: new THREE.TextureLoader().load( 'textures/south_bank_skate_park_small.jpg' )
+	} );
+
+	panorama = new THREE.Mesh( geometry, material );
+	panorama.matrixAutoUpdate = false;
+	scene.add( panorama );
 }
 ```
 
@@ -309,25 +355,7 @@ function enableVR(){
 
 ```
 
-### Create Panorama
 
-```
-function createPanorama() {
-	// panoramic, equirectangular image, projected on the inside of a sphere ( BufferGeometry - for performance )
-	var panorama_geometry = new THREE.SphereBufferGeometry( 500, 60, 40 );
-	// invert the geometry on the x-axis so that all of the faces point inward
-	panorama_geometry.scale( - 1, 1, 1 );
-
-	var panorama_material = new THREE.MeshBasicMaterial( {
-		map: new THREE.TextureLoader().load( 'textures/south_bank_skate_park_small.jpg' )
-	} );
-
-	panorama = new THREE.Mesh( panorama_geometry, panorama_material );
-	panorama.matrixAutoUpdate = false;
-	panorama.updateMatrix();
-	scene.add( panorama );
-}
-```
 
 ###Links:
 
