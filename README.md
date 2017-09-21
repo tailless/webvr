@@ -1,8 +1,10 @@
 # Coding in Three Dimensions 
 
+Welcome..
+
 Introduction to 3d, WebGL & WebVR.  
 
-Welcome..
+
 
 
 ## 3D in Javascript - set up :
@@ -187,40 +189,53 @@ function createLights() {
 
 ### Run a localhost
 
+..python: 
+
+```
+# Python 3.x
+python -m http.server
+
+# Python 2.x
+python -m SimpleHTTPServer
+
+```
+
+..or node http-server:
+
+```
+npm install http-server -g
+
+http-server . -p 8000
+
+```
+
+ Secure connection : serve over HTTPS (optional):
+
+- create the cert-key pair files :
+
+`openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem`
+
+( This generates a cert-key pair and it will be valid for roughly 10 years (3650 days to be exact).)
+
+..then run:
+
+`http-server -p 8000  -ssl -cert cert.pem `
 
 
-## What is WebVR ?
+### WebVR ?
 
 WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in your browser.
 
+Experimental feature, enabel in Chrome : chrome://flags#enable-webvr
 
-```markdown
-Syntax highlighted code block
+- http://caniuse.com/#feat=webvr
 
-# Header 1
-## Header 2
-### Header 3
+###Links:
 
-- Bulleted
-- List
+WebGL:
+- http://caniuse.com/#feat=webgl
 
-1. Numbered
-2. List
+WebVR:
 
-**Bold** and _Italic_ and `Code` text
+- https://developers.google.com/web/fundamentals/vr/
 
-[Link](url) and ![Image](src)
-```
-
-
-
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/tailless/webvr/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
