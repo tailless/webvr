@@ -13,25 +13,29 @@ Introduction to 3d, WebGL & WebVR.
 
 ## 3D with Javascript - set up :
 
-### What is [Three.js](https://threejs.org/) ? :
+## What is [Three.js](https://threejs.org/) ?
 
-A javascript 3d library, that abstracts away the complexities of coding 3d in javascript -  by [Mr. Doob](http://mrdoob.com/)
+A javascript 3d library, that abstracts away the complexities of coding 3d/WebGL -  by [Mr. Doob](http://mrdoob.com/)
 
 How to get it : 
 
 - [download](https://threejs.org/build/three.min.js) just the minified build file.
 
-Other :
+Or :
 - [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.(large file!)
 - install via npm & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build project files:
-```$ npm install three```
+
+``` bash $ npm install three ```
 
 
 
 
-## setup basic HTML + import three.js library
+## The basic HTML
 
-- The index.html file
+- The `index.html` file
+- import three.js minified library
+- import a WebVR utility script
+- import our JS workshop code
 
 ```
 <!DOCTYPE html>
@@ -61,8 +65,10 @@ Other :
 
 ## Create the 3D basics
 
-- In the  `workshop.js` file in ./js folder.
-- Set up the Scene, Camera & Renderer of a 3d project.
+- The  `workshop.js` file in `./js folder`.
+- Create the *Scene*,
+- the Camera,
+- and the Renderer.
 
 ```
 var scene, camera, renderer;
@@ -129,9 +135,9 @@ function render() {
 Make a cube :
 - Create a geometry.
 - Create a material.
-- Create a mesh, and add geometry and the material to the mesh.
-- Add mesh to the scene.
-- Animate it!
+- Create a mesh object, and add the geometry and the material to the mesh.
+- Add the mesh to the scene.
+- Animate!
 
 ```
 function createMesh(){
@@ -147,7 +153,7 @@ function createMesh(){
 ```
 
 Declare the mesh at the top, so that it's accessable to us :
-```var mesh;```
+``` var mesh; ```
 
 Add to render():
 ```
@@ -161,7 +167,7 @@ Add to render():
 - Pick a material that reflects light.
 
 ```
-material =  new THREE.MeshStandardMaterial({ color: 0x9988ff  });
+material = new THREE.MeshStandardMaterial({ color: 0x9988ff  });
 ```
 
 ## Turn on the Ligths
