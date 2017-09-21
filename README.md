@@ -29,9 +29,9 @@ Other :
 
 
 
-### setup basic HTML + import three.js library
+## setup basic HTML + import three.js library
 
-- Make a index.html file.
+- The index.html file
 
 ```
 <!DOCTYPE html>
@@ -59,7 +59,9 @@ Other :
 	</body>
 ```
 
-### Create the 3D basics
+## Create the 3D basics
+
+- In the  `workshop.js` file in ./js folder.
 - Set up the Scene, Camera & Renderer of a 3d project.
 
 ```
@@ -122,7 +124,7 @@ function render() {
 }
 ```
 
-### Create an 3D object
+## Create an 3D object
 
 Make a cube :
 - Create a geometry.
@@ -153,7 +155,7 @@ Add to render():
    mesh.rotation.y += 0.02;
 ```
 
-### Explore Materials
+## Explore Materials
 
 - Remove the wireframe...
 - Pick a material that reflects light.
@@ -162,7 +164,7 @@ Add to render():
 material =  new THREE.MeshStandardMaterial({ color: 0x9988ff  });
 ```
 
-### Turn on the Ligths
+## Turn on the Ligths
 
 ```
 function createLights() {
@@ -174,7 +176,7 @@ function createLights() {
 }
 ```
 
-### Create a Disco Ball
+## Create a Disco Ball
 
 - Change the geometry to Sphere and change colour of material and turn on flat shading. 
 - Add extra lights. 
@@ -198,34 +200,23 @@ Add in createLights()
 ```
 
 
-### More Complex Scene & Models
+## More Complex 3D Models & Maps
 
 - explore the three.js [editor](https://threejs.org/editor/)
-- 
+- load an .obj file.
+- attach a map
+- export as json
 
-### Run a localhost
+## Run a localhost
 
-..python: 
+- Install node http-server (in not already installed):
+```npm install http-server -g```
 
-```
-# Python 3.x
-python -m http.server
+- Run HTTP Server:
+```http-server . -p 8000```
 
-# Python 2.x
-python -m SimpleHTTPServer
 
-```
-
-..or node http-server:
-
-```
-npm install http-server -g
-
-http-server . -p 8000
-
-```
-
- Secure connection : serve over HTTPS (optional):
+### Secure connection : serve over HTTPS (optional):
 
 - create the cert-key pair files :
 
