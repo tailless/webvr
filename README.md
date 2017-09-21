@@ -5,9 +5,13 @@ Welcome..
 Introduction to 3d, WebGL & WebVR.  
 
 
+- 3D Cartesian Coordinates
+
+![3D Cartesian Coordinates]:(/images/3D_coordinate_system.png)
 
 
-## 3D in Javascript - set up :
+
+## 3D with Javascript - set up :
 
 ### What is [Three.js](https://threejs.org/) ? :
 
