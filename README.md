@@ -5,17 +5,15 @@ Welcome..
 Introduction to 3d, WebGL & WebVR.  
 
 
-- 3D Cartesian Coordinates
+## 3D with Javascript :
 
-![3D Cartesian Coordinates](/images/3D_coordinate_system.png)
+### WebGL ?
+WebGL - Web Graphics Library - is a JavaScript API for rendering 3D graphics in the browser, without plugins, allowing GPU accelerated usage of physics and image processing and effects. It is a Shader-based API using [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language).
 
 
+### What is [Three.js](https://threejs.org/) ?
 
-## 3D with Javascript - set up :
-
-## What is [Three.js](https://threejs.org/) ?
-
-A javascript 3d library, that abstracts away the complexities of coding 3d/WebGL -  by [Mr. Doob](http://mrdoob.com/)
+A javascript 3d library, that abstracts away the complexities of coding 3d & the WebGL API -  by [Mr. Doob](http://mrdoob.com/)
 
 How to get it : 
 
@@ -23,6 +21,7 @@ How to get it :
 
 Or :
 - [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.(large file!)
+
 - install via npm & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build project files:
 ``` 
 $ npm install three
@@ -65,9 +64,7 @@ $ npm install three
 ## Create the 3D basics
 
 - Open the `workshop.js` file in `./js folder`
-- Create the Scene,
-- the Camera,
-- and the Renderer
+- Create a Scene, a Camera, and a Renderer
 
 ```
 var scene, camera, renderer;
@@ -129,6 +126,11 @@ function render() {
 }
 ```
 
+- Open file in your WebGL capable [browser](http://caniuse.com/#feat=webgl)
+- Open the Dev Tools and inspect the Scene by typing **scene** in the console
+
+
+
 ## Create an 3D object
 
 Make a cube :
@@ -136,7 +138,6 @@ Make a cube :
 - Create a material
 - Create a mesh object, and add the geometry and the material to the mesh
 - Add the mesh to the scene
-- Animate!
 
 ```
 function createMesh(){
@@ -151,16 +152,23 @@ function createMesh(){
 }
 ```
 
-Declare the mesh at the top, so that it's accessable to us :
+- Declare the mesh at the top, so that it's accessable to us
 ``` 
 var mesh; 
 ```
 
-Add to render():
+- Add to render() to animate
 ```
    mesh.rotation.x += 0.01;
    mesh.rotation.y += 0.02;
 ```
+
+### A Note on 3D Space
+
+- The **Z** dimension - 3D Cartesian Coordinates
+
+![3D Cartesian Coordinates](/images/3D_coordinate_system.png)
+
 
 ## Explore Materials
 
@@ -174,6 +182,7 @@ material = new THREE.MeshStandardMaterial({ color: 0x9988ff  });
 ## Turn on the Ligths
 
 - Add light to the scene
+
 ```
 function createLights() {
 
@@ -209,8 +218,8 @@ function createLights() {
 ## More Complex 3D Models & Maps
 
 - explore the three.js [editor](https://threejs.org/editor/)
-- load a 3D model (`./models/Cirno.obj`)
-- attach a diffusion map texture(`/models/cirno_d.tga`)
+- load a 3D model
+- attach a diffusion map texture
 - export model with map as json
 
 
@@ -221,7 +230,7 @@ function createLights() {
 npm install http-server -g
 ```
 
-- Run HTTP Server:
+- Navigate to workshop folder, then run http server:
 ```
 http-server . -p 8000
 ```
@@ -231,16 +240,15 @@ http-server . -p 8000
 
 This step is optional, but you will get a warning in Chrome later on if accessing the WebVR API over an insecure connection.
 
-- create the cert-key pair files, valid for roughly 10 years
-
+- Navigate to workshop folder
+- Create the cert-key pair files (valid for roughly 10 years)
 ```
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 ```
 
-- ..then run:
-
+- ..then run https server:
 ```
-http-server -p 8000  -ssl -cert cert.pem 
+http-server -p 8000  -S -C cert.pem
 ```
 
 
@@ -261,9 +269,8 @@ function loadModel(){
 		"models/cirno.json",
 
 		// pass the loaded data to the onLoad function.
-		//Here it is assumed to be an object
 		function ( obj ) {
-			//add the loaded object to the scene
+			// add the loaded object to the scene
 			obj.position.set( 120, -100, -170 );
 			obj.scale.set( 0.1, 0.1, 0.1 );
 
@@ -300,10 +307,10 @@ if(girl){
 
 ## Create Panorama
 
-- Create a Sphere geometry (BufferGeometry for performance )
+- Create a Sphere geometry (using BufferGeometry for performance )
 - Invert the geometry on the x-axis so that all of the faces point inward, so that the image projects on the inside of a sphere 
 - Create basic material with a map
-- Load a panoramic, [equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection) image as texture
+- Load a panoramic, [equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection) image as map texture
 - Attach geometry & material to a mesh, 
 - Disable matrixAutoUpdate (performance) - our mesh will not move
 - Add panorama mesh to scene
@@ -323,25 +330,26 @@ function createPanorama() {
 	scene.add( panorama );
 }
 ```
-
+Images by Jon Davey(http://jondavey.com/)
 
 ## WebVR ?
 
-WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in your browser.
+WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in virtual reality devices or browsers.
 
-[Experimental feature](http://caniuse.com/#feat=webvr), enabel in Chrome by setting chrome://flags#enable-webvr ,
-or for live projects, request a [Origin Token]() to enable by default.
+[Experimental feature](http://caniuse.com/#feat=webvr), enabel in Chrome(59+) by setting chrome://flags#enable-webvr ,
+or for live projects, request a [Origin Token](https://github.com/GoogleChrome/OriginTrials/blob/gh-pages/developer-guide.md) to enable by default on your domain.
 
 
-- Enable VR in renerer
+- Enable VR in renderer
 - Use the WebVR helper script to detect the device capabilities
+
 ```
 function enableVR(){
 
 	//enable the renderer
 	renderer.vr.enabled = true;
 
-  // check if WebVR API is available
+  	// check if WebVR API is available
 	WEBVR.checkAvailability().catch( function( message ) {
 
 		document.body.appendChild( WEBVR.getMessageContainer( message ) );
@@ -362,22 +370,34 @@ function enableVR(){
 
 ## Get your device ready
 
-- Android Phone with the Google VR Services app installed ( requires Android OS version 6+ Marshmallow ) :
+- Android Phone with the Google VR Services app installed ( requires Android OS version 6+ Marshmallow )
 - Chrome browser
-- VR Goggles
+- VR Goggles (optional)
 - Make sure you have your laptop and phone connected to the same network
 - Use Chrome to navigate to your laptop's IP address + port number, i.e 192.168.0.2:8000 
 - Fingers crossed, you can now enjoy your master piece :)
 
 
+## About Interaction
+
+- **Controllers with no degrees of freedom (like Cardboard)** 
+These are controllers that are tied entirely to the viewport, and typically the interaction is assumed to originate in the center of the viewport.
+- **Controllers with 3 degrees of freedom (like the Daydream Controller).** 
+A controller with 3 degrees provides orientation information, but not location information. Typically such controllers are assumed to be held in the person’s left or right hand, and their position in 3D space is estimated.
+- **Controllers with 6 degrees of freedom (like the Oculus Rift or Vive).** 
+Any controller with 6 degrees of freedom will provide both orientation and location information. These are typically at the upper end of capabilities range, and have the best accuracy.
 
 
-###Links:
 
-WebGL:
-- http://caniuse.com/#feat=webgl
+
+### Links:
 
 WebVR:
+- [mozvr.com](https://mozvr.com/)
+- [developers.google.com/web/fundamentals/vr](https://developers.google.com/web/fundamentals/vr/)
+- [createwebvr.com](http://createwebvr.com/)
+- [experiments;google](https://experiments.withgoogle.com/chrome?tag=Virtual+%26+Augmented+Reality)
 
-- https://developers.google.com/web/fundamentals/vr/
+WebGL:
+- [experiments;google](https://experiments.withgoogle.com/chrome?tag=WebGL)
 
