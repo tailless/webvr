@@ -64,10 +64,10 @@ $ npm install three
 
 ## Create the 3D basics
 
-- The  `workshop.js` file in `./js folder`.
+- Open the `workshop.js` file in `./js folder`
 - Create the Scene,
 - the Camera,
-- and the Renderer.
+- and the Renderer
 
 ```
 var scene, camera, renderer;
@@ -132,10 +132,10 @@ function render() {
 ## Create an 3D object
 
 Make a cube :
-- Create a geometry.
-- Create a material.
-- Create a mesh object, and add the geometry and the material to the mesh.
-- Add the mesh to the scene.
+- Create a geometry
+- Create a material
+- Create a mesh object, and add the geometry and the material to the mesh
+- Add the mesh to the scene
 - Animate!
 
 ```
@@ -229,7 +229,7 @@ http-server . -p 8000
 
 ### Establish secure connection - serve over HTTPS (optional):
 
-This step is optional, but you will get a warning in Chrome later on if running over an insecure connection.
+This step is optional, but you will get a warning in Chrome later on if accessing the WebVR API over an insecure connection.
 
 - create the cert-key pair files, valid for roughly 10 years
 
@@ -362,11 +362,12 @@ function enableVR(){
 
 ## Get your device ready
 
-- Android Phone with the Google VR Services app installed ( requires Android OS version 6+ Marshmallow )
+- Android Phone with the Google VR Services app installed ( requires Android OS version 6+ Marshmallow ) :
 - Chrome browser
 - VR Goggles
-- Make sure you have laptop and phone coneected to the same network
+- Make sure you have your laptop and phone connected to the same network
 - Use Chrome to navigate to your laptop's IP address + port number, i.e 192.168.0.2:8000 
+- Fingers crossed, you can now enjoy your master piece :)
 
 
 
