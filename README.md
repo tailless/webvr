@@ -149,12 +149,12 @@ function createMesh(){
 }
 ```
 
-- Declare the mesh at the top, so that it's accessable to us :
+- Declare the mesh at the top, so that it's accessable to us
 ``` 
 var mesh; 
 ```
 
-- Add to render() to animate:
+- Add to render() to animate
 ```
    mesh.rotation.x += 0.01;
    mesh.rotation.y += 0.02;
@@ -367,7 +367,7 @@ function enableVR(){
 
 ## Get your device ready
 
-- Android Phone with the Google VR Services app installed ( requires Android OS version 6+ Marshmallow ) :
+- Android Phone with the Google VR Services app installed ( requires Android OS version 6+ Marshmallow )
 - Chrome browser
 - VR Goggles
 - Make sure you have your laptop and phone connected to the same network
@@ -377,12 +377,10 @@ function enableVR(){
 
 
 
-###Links:
-
-WebGL:
+### Links:
 
 
 WebVR:
-- https://mozvr.com/
-- https://developers.google.com/web/fundamentals/vr/
+- [mozvr.com](https://mozvr.com/)
+- [developers.google.com/web/fundamentals/vr](https://developers.google.com/web/fundamentals/vr/)
 
