@@ -340,6 +340,7 @@ or for live projects, request a [Origin Token]() to enable by default.
 
 - Enable VR in renerer
 - Use the WebVR helper script to detect the device capabilities
+
 ```
 function enableVR(){
 
