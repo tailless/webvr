@@ -331,7 +331,7 @@ Images by Jon Davey(http://jondavey.com/)
 
 ## WebVR ?
 
-WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in your browser.
+WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in virtual reality devices or browsers.
 
 [Experimental feature](http://caniuse.com/#feat=webvr), enabel in Chrome(59+) by setting chrome://flags#enable-webvr ,
 or for live projects, request a [Origin Token](https://github.com/GoogleChrome/OriginTrials/blob/gh-pages/developer-guide.md) to enable by default on your domain.
@@ -383,4 +383,5 @@ function enableVR(){
 WebVR:
 - [mozvr.com](https://mozvr.com/)
 - [developers.google.com/web/fundamentals/vr](https://developers.google.com/web/fundamentals/vr/)
+- [createwebvr.com](http://createwebvr.com/)
 
