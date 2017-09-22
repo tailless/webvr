@@ -10,7 +10,7 @@ Introduction to 3d, WebGL & WebVR.
 
 ## What is [Three.js](https://threejs.org/) ?
 
-A javascript 3d library, that abstracts away the complexities of coding 3d/WebGL -  by [Mr. Doob](http://mrdoob.com/)
+A javascript 3d library, that abstracts away the complexities of coding 3d & the WebGL API -  by [Mr. Doob](http://mrdoob.com/)
 
 How to get it : 
 
@@ -123,15 +123,9 @@ function render() {
 }
 ```
 
-- Open file in your browser ( Chrome! )
-- Open the Dev Tools and inspect the Scene by typing scene in the console
+- Open file in your WebGL capable [browser](http://caniuse.com/#feat=webgl)
+- Open the Dev Tools and inspect the Scene by typing **scene** in the console
 
-
-## A Note on 3D Space
-
-- The ***Z*** dimension - 3D Cartesian Coordinates
-
-![3D Cartesian Coordinates](/images/3D_coordinate_system.png)
 
 
 ## Create an 3D object
@@ -165,6 +159,13 @@ var mesh;
    mesh.rotation.x += 0.01;
    mesh.rotation.y += 0.02;
 ```
+
+### A Note on 3D Space
+
+- The **Z** dimension - 3D Cartesian Coordinates
+
+![3D Cartesian Coordinates](/images/3D_coordinate_system.png)
+
 
 ## Explore Materials
 
@@ -379,7 +380,7 @@ function enableVR(){
 ###Links:
 
 WebGL:
-- http://caniuse.com/#feat=webgl
+
 
 WebVR:
 - https://mozvr.com/
