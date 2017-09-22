@@ -5,11 +5,6 @@ Welcome..
 Introduction to 3d, WebGL & WebVR.  
 
 
-- 3D Cartesian Coordinates
-
-![3D Cartesian Coordinates](/images/3D_coordinate_system.png)
-
-
 
 ## 3D with Javascript - set up :
 
@@ -128,6 +123,13 @@ function render() {
 
 }
 ```
+
+## A Note on 3D Space
+
+- The ***Z*** dimension - 3D Cartesian Coordinates
+
+![3D Cartesian Coordinates](/images/3D_coordinate_system.png)
+
 
 ## Create an 3D object
 
