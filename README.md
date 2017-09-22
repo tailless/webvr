@@ -215,8 +215,8 @@ function createLights() {
 ## More Complex 3D Models & Maps
 
 - explore the three.js [editor](https://threejs.org/editor/)
-- load a 3D model (`./models/Cirno.obj`)
-- attach a diffusion map texture(`/models/cirno_d.tga`)
+- load a 3D model
+- attach a diffusion map texture
 - export model with map as json
 
 
