@@ -8,7 +8,7 @@ Introduction to 3d, WebGL & WebVR.
 ## 3D with Javascript :
 
 ### WebGL ?
-WebGL is a JavaScript API for rendering 3D graphics in the browser, allowing GPU accelerated usage of physics and image processing and effects.
+WebGL - Web Graphics Library - is a JavaScript API for rendering 3D graphics in the browser, without plugins, allowing GPU accelerated usage of physics and image processing and effects. It is a Shader-based API using [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language).
 
 
 ### What is [Three.js](https://threejs.org/) ?
