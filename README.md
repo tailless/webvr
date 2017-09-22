@@ -226,7 +226,7 @@ function createLights() {
 npm install http-server -g
 ```
 
-- Run HTTP Server:
+- Navigate to workshop folder, then run http server:
 ```
 http-server . -p 8000
 ```
@@ -236,14 +236,13 @@ http-server . -p 8000
 
 This step is optional, but you will get a warning in Chrome later on if accessing the WebVR API over an insecure connection.
 
-- create the cert-key pair files, valid for roughly 10 years
-
+- Navigate to workshop folder
+- Create the cert-key pair files (valid for roughly 10 years)
 ```
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 ```
 
-- ..then run:
-
+- ..then run https server:
 ```
 http-server -p 8000  -ssl -cert cert.pem 
 ```
@@ -266,9 +265,8 @@ function loadModel(){
 		"models/cirno.json",
 
 		// pass the loaded data to the onLoad function.
-		//Here it is assumed to be an object
 		function ( obj ) {
-			//add the loaded object to the scene
+			// add the loaded object to the scene
 			obj.position.set( 120, -100, -170 );
 			obj.scale.set( 0.1, 0.1, 0.1 );
 
@@ -305,10 +303,10 @@ if(girl){
 
 ## Create Panorama
 
-- Create a Sphere geometry (BufferGeometry for performance )
+- Create a Sphere geometry (using BufferGeometry for performance )
 - Invert the geometry on the x-axis so that all of the faces point inward, so that the image projects on the inside of a sphere 
 - Create basic material with a map
-- Load a panoramic, [equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection) image as texture
+- Load a panoramic, [equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection) image as map texture
 - Attach geometry & material to a mesh, 
 - Disable matrixAutoUpdate (performance) - our mesh will not move
 - Add panorama mesh to scene
@@ -328,17 +326,17 @@ function createPanorama() {
 	scene.add( panorama );
 }
 ```
-
+Images by Jon Davey(http://jondavey.com/)
 
 ## WebVR ?
 
 WebVR is a JavaScript API for creating immersive 3D, Virtual Reality experiences in your browser.
 
-[Experimental feature](http://caniuse.com/#feat=webvr), enabel in Chrome by setting chrome://flags#enable-webvr ,
-or for live projects, request a [Origin Token]() to enable by default.
+[Experimental feature](http://caniuse.com/#feat=webvr), enabel in Chrome(59+) by setting chrome://flags#enable-webvr ,
+or for live projects, request a [Origin Token](https://github.com/GoogleChrome/OriginTrials/blob/gh-pages/developer-guide.md) to enable by default on your domain.
 
 
-- Enable VR in renerer
+- Enable VR in renderer
 - Use the WebVR helper script to detect the device capabilities
 
 ```
@@ -347,7 +345,7 @@ function enableVR(){
 	//enable the renderer
 	renderer.vr.enabled = true;
 
-  // check if WebVR API is available
+  	// check if WebVR API is available
 	WEBVR.checkAvailability().catch( function( message ) {
 
 		document.body.appendChild( WEBVR.getMessageContainer( message ) );
@@ -384,6 +382,6 @@ WebGL:
 - http://caniuse.com/#feat=webgl
 
 WebVR:
-
+- https://mozvr.com/
 - https://developers.google.com/web/fundamentals/vr/
 
