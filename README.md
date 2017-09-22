@@ -18,6 +18,7 @@ How to get it :
 
 Or :
 - [download](https://github.com/mrdoob/three.js/archive/master.zip) entire library, to explore the source and examples.(large file!)
+
 - install via npm & use a module bundler, such as [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/) to build project files:
 ``` 
 $ npm install three
@@ -60,9 +61,7 @@ $ npm install three
 ## Create the 3D basics
 
 - Open the `workshop.js` file in `./js folder`
-- Create the Scene,
-- the Camera,
-- and the Renderer
+- Create a Scene, a Camera, and a Renderer
 
 ```
 var scene, camera, renderer;
@@ -124,6 +123,10 @@ function render() {
 }
 ```
 
+- Open file in your browser ( Chrome! )
+- Open the Dev Tools and inspect the Scene by typing scene in the console
+
+
 ## A Note on 3D Space
 
 - The ***Z*** dimension - 3D Cartesian Coordinates
@@ -138,7 +141,6 @@ Make a cube :
 - Create a material
 - Create a mesh object, and add the geometry and the material to the mesh
 - Add the mesh to the scene
-- Animate!
 
 ```
 function createMesh(){
@@ -153,12 +155,12 @@ function createMesh(){
 }
 ```
 
-Declare the mesh at the top, so that it's accessable to us :
+- Declare the mesh at the top, so that it's accessable to us :
 ``` 
 var mesh; 
 ```
 
-Add to render():
+- Add to render() to animate:
 ```
    mesh.rotation.x += 0.01;
    mesh.rotation.y += 0.02;
@@ -176,6 +178,7 @@ material = new THREE.MeshStandardMaterial({ color: 0x9988ff  });
 ## Turn on the Ligths
 
 - Add light to the scene
+
 ```
 function createLights() {
 
