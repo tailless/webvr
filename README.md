@@ -245,7 +245,7 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 
 - ..then run https server:
 ```
-http-server -p 8000  -ssl -cert cert.pem 
+http-server -p 8000  -S -C cert.pem
 ```
 
 
