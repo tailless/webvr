@@ -5,10 +5,13 @@ Welcome..
 Introduction to 3d, WebGL & WebVR.  
 
 
+## 3D with Javascript :
 
-## 3D with Javascript - set up :
+### WebGL ?
+WebGL is a JavaScript API for rendering 3D graphics in the browser, allowing GPU accelerated usage of physics and image processing and effects.
 
-## What is [Three.js](https://threejs.org/) ?
+
+### What is [Three.js](https://threejs.org/) ?
 
 A javascript 3d library, that abstracts away the complexities of coding 3d & the WebGL API -  by [Mr. Doob](http://mrdoob.com/)
 
@@ -369,19 +372,32 @@ function enableVR(){
 
 - Android Phone with the Google VR Services app installed ( requires Android OS version 6+ Marshmallow )
 - Chrome browser
-- VR Goggles
+- VR Goggles (optional)
 - Make sure you have your laptop and phone connected to the same network
 - Use Chrome to navigate to your laptop's IP address + port number, i.e 192.168.0.2:8000 
 - Fingers crossed, you can now enjoy your master piece :)
+
+
+## About Interaction
+
+- **Controllers with no degrees of freedom (like Cardboard)** 
+These are controllers that are tied entirely to the viewport, and typically the interaction is assumed to originate in the center of the viewport.
+- **Controllers with 3 degrees of freedom (like the Daydream Controller).** 
+A controller with 3 degrees provides orientation information, but not location information. Typically such controllers are assumed to be held in the person’s left or right hand, and their position in 3D space is estimated.
+- **Controllers with 6 degrees of freedom (like the Oculus Rift or Vive).** 
+Any controller with 6 degrees of freedom will provide both orientation and location information. These are typically at the upper end of capabilities range, and have the best accuracy.
 
 
 
 
 ### Links:
 
-
 WebVR:
 - [mozvr.com](https://mozvr.com/)
 - [developers.google.com/web/fundamentals/vr](https://developers.google.com/web/fundamentals/vr/)
 - [createwebvr.com](http://createwebvr.com/)
+- [experiments;google](https://experiments.withgoogle.com/chrome?tag=Virtual+%26+Augmented+Reality)
+
+WebGL:
+- [experiments;google](https://experiments.withgoogle.com/chrome?tag=WebGL)
 
